@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Watamu Sanctuary Gateway
 
 Build a luxury boutique villa website for "The Villa @Watamu," a boutique healing sanctuary and restaurant in Watamu, Kenya. Contact: +254 718 292 923, stay@thevillawatamu.com, located in Watamu, Kenya. Social links for Instagram, Facebook, and TripAdvisor in the top bar.
@@ -87,3 +88,6 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+=======
+# TheVilla
+>>>>>>> af95b171d5aac3d2250e2acfcc2fe1784ef610bf
