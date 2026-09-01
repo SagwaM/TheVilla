@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Watamu Sanctuary Gateway
 
 Build a luxury boutique villa website for "The Villa @Watamu," a boutique healing sanctuary and restaurant in Watamu, Kenya. Contact: +254 718 292 923, stay@thevillawatamu.com, located in Watamu, Kenya. Social links for Instagram, Facebook, and TripAdvisor in the top bar.
@@ -68,15 +68,6 @@ Keep total motion restrained; nothing should feel like it's fighting the calm, s
 
 Technical requirements: Fully responsive down to mobile, fast image loading (lazy load below the fold), optimized/compressed hero video with a poster image for slow connections, accessible alt text on all images, clear booking CTA visible on every page (sticky or repeated), local SEO structured data for a lodging business, SSL, and a working contact form.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/942981e0-8ed7-4396-a9ea-bd3646841c8a).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
