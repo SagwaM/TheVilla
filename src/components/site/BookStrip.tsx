@@ -18,7 +18,7 @@ export function BookStrip({
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           <CtaLink to="/book">Book Your Stay</CtaLink>
-          <CtaAnchor href={SITE.whatsapp} variant="light" target="_blank" rel="noreferrer noopener">
+          <CtaAnchor href={SITE.whatsappHref("Hello The Villa @Watamu, I would like to enquire about booking a stay.")} variant="light" target="_blank" rel="noreferrer noopener">
             WhatsApp Us
           </CtaAnchor>
         </div>

@@ -2,11 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Facebook, Instagram, Mail, MapPin, Phone, Plane } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import { NAV, SITE } from "@/lib/site";
 import logo from "@/assets/logo-palm.png";
 
 export function Footer() {
   const [email, setEmail] = useState("");
+  const [joining, setJoining] = useState(false);
 
   return (
     <footer className="bg-ink text-cream/70">
@@ -70,12 +72,14 @@ export function Footer() {
               <MapPin className="mt-1 h-4 w-4 shrink-0 text-gold" strokeWidth={1.5} />
               {SITE.location}
             </li>
-            <li className="flex gap-3">
-              <Phone className="mt-1 h-4 w-4 shrink-0 text-gold" strokeWidth={1.5} />
-              <a href={SITE.phoneHref} className="hover:text-gold">
-                {SITE.phone}
-              </a>
-            </li>
+            {SITE.phones.map((p) => (
+              <li key={p.href} className="flex gap-3">
+                <Phone className="mt-1 h-4 w-4 shrink-0 text-gold" strokeWidth={1.5} />
+                <a href={p.href} className="hover:text-gold">
+                  {p.display}
+                </a>
+              </li>
+            ))}
             <li className="flex gap-3">
               <Mail className="mt-1 h-4 w-4 shrink-0 text-gold" strokeWidth={1.5} />
               <a href={SITE.emailHref} className="hover:text-gold">
@@ -93,16 +97,32 @@ export function Footer() {
           </p>
           <form
             className="mt-6 flex"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
               if (!email.includes("@")) {
                 toast.error("Please enter a valid email address.");
                 return;
               }
-              toast.success("Thank you — you're on the list.");
+              if (joining) return;
+              setJoining(true);
+              const { error } = await supabase
+                .from("newsletter_subscribers")
+                .insert({ email: email.trim().toLowerCase() });
+              setJoining(false);
+              if (error) {
+                if (error.code === "23505") {
+                  toast.success("You're already on the list — thank you.");
+                  setEmail("");
+                  return;
+                }
+                toast.error("Something went wrong. Please try again.");
+                return;
+              }
+              toast.success("Thank you — you're on our mailing list.");
               setEmail("");
             }}
           >
+
             <label htmlFor="newsletter" className="sr-only">
               Email address
             </label>
@@ -118,8 +138,9 @@ export function Footer() {
             <button
               type="submit"
               className="shrink-0 bg-gold px-5 font-sans text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-gold-foreground transition-colors hover:bg-gold-soft"
+              disabled={joining}
             >
-              Join
+              {joining ? "…" : "Join"}
             </button>
           </form>
         </div>
@@ -132,8 +153,11 @@ export function Footer() {
             <Link to="/privacy" className="hover:text-gold">
               Privacy Policy
             </Link>
-            <a href={SITE.whatsapp} target="_blank" rel="noreferrer noopener" className="hover:text-gold">
+            <a href={SITE.whatsappHref("Hello The Villa @Watamu, I have a question about staying with you.")} target="_blank" rel="noreferrer noopener" className="hover:text-gold">
               WhatsApp
+            </a>
+            <a href="/auth" className="hover:text-gold">
+              Owner Login
             </a>
           </p>
         </div>

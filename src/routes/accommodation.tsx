@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { BedDouble, Check, Maximize, Users } from "lucide-react";
-import { CtaLink, PageHero, SectionHeading } from "@/components/site/ui";
+import { CtaAnchor, CtaLink, PageHero, SectionHeading } from "@/components/site/ui";
 import { Reveal } from "@/components/site/Reveal";
 import { BookStrip } from "@/components/site/BookStrip";
 import { Lightbox } from "@/components/site/Lightbox";
@@ -142,7 +142,7 @@ function Accommodation() {
                 </div>
               </dl>
               <div className="mt-10">
-                <CtaLink to="/book">Book This Suite</CtaLink>
+                <CtaAnchor href={`/book?suite=${suite.slug}`}>Book This Suite</CtaAnchor>
               </div>
             </Reveal>
           </div>

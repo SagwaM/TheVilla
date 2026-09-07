@@ -101,7 +101,7 @@ function Wellness() {
               <CtaLink to="/contact" variant="outline">
                 Enquire About Wellness
               </CtaLink>
-              <CtaAnchor href={SITE.whatsapp} target="_blank" rel="noreferrer noopener">
+              <CtaAnchor href={SITE.whatsappHref("Hello The Villa @Watamu, I would like to enquire about your wellness treatments.")} target="_blank" rel="noreferrer noopener">
                 WhatsApp Us
               </CtaAnchor>
             </div>

@@ -19,18 +19,25 @@ import { SUITES, SUITE_AMENITIES } from "@/lib/site";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "The Villa @Watamu — Boutique Healing Sanctuary & Restaurant" },
+      { title: "The Villa @Watamu — Boutique Villa & Restaurant in Watamu, Kenya" },
       {
         name: "description",
         content:
-          "A five-suite boutique healing sanctuary and restaurant in Watamu, Kenya. Pool, jacuzzi, wellness space and coastal cuisine. Relax. Reconnect. Rejuvenate.",
+          "Boutique villa accommodation in Watamu, Kenya: five luxury guest suites, a restaurant, pool, jacuzzi and wellness space near Watamu Marine Park. Relax. Reconnect. Rejuvenate.",
       },
-      { property: "og:title", content: "The Villa @Watamu — Boutique Healing Sanctuary" },
+      {
+        name: "keywords",
+        content:
+          "Watamu accommodation, boutique hotel Watamu, villa Watamu Kenya, Watamu Marine Park hotels, Kilifi County beach villa, Watamu restaurant, wellness retreat Kenya coast, Malindi Watamu luxury stay",
+      },
+      { property: "og:title", content: "The Villa @Watamu — Boutique Villa in Watamu, Kenya" },
       {
         property: "og:description",
         content:
-          "Five luxury guest suites, a restaurant and a wellness space on the Kenyan coast.",
+          "Five luxury guest suites, a restaurant and a wellness space on the Watamu coast, Kenya.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -55,17 +62,9 @@ function Home() {
       {/* Hero */}
       <section className="relative flex min-h-[100svh] items-center overflow-hidden">
         <div className="absolute inset-0">
-          <video
-            className="ken-burns h-full w-full object-cover"
-            poster={IMG.heroPool}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            aria-hidden="true"
-            tabIndex={-1}
-          />
+          {/* Static poster with a slow Ken Burns drift. Swap in a <video> source
+              here when the compressed pool-at-night loop is available. */}
+
           <img
             src={IMG.heroPool}
             alt="The lantern-lit pool at The Villa @Watamu at night, framed by palm trees"

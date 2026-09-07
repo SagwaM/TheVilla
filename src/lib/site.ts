@@ -1,16 +1,30 @@
+export const PHONES = [
+  { display: "+254 798 515 231", href: "tel:+254798515231", wa: "254798515231" },
+  { display: "+254 720 729 135", href: "tel:+254720729135", wa: "254720729135" },
+] as const;
+
 export const SITE = {
   name: "The Villa @Watamu",
   tagline: "A boutique healing sanctuary and restaurant in the heart of Watamu.",
-  phone: "+254 718 292 923",
-  phoneHref: "tel:+254718292923",
-  whatsapp: "https://wa.me/254718292923",
-  email: "stay@thevillawatamu.com",
-  emailHref: "mailto:stay@thevillawatamu.com",
+  phones: PHONES,
+  phone: PHONES[0].display,
+  phoneHref: PHONES[0].href,
+  phoneAlt: PHONES[1].display,
+  phoneAltHref: PHONES[1].href,
+  whatsapp: `https://wa.me/${PHONES[0].wa}`,
+  whatsappHref: (message: string, index = 0) =>
+    `https://wa.me/${(PHONES[index] ?? PHONES[0]).wa}?text=${encodeURIComponent(message)}`,
+  email: "sagwaisaac@gmail.com",
+  emailHref: "mailto:sagwaisaac@gmail.com",
   location: "Watamu, Kilifi County, Kenya",
+  mapQuery: "The Villa @Watamu, Watamu, Kilifi County, Kenya",
+  geo: { lat: -3.3538, lng: 40.0186 },
   instagram: "https://instagram.com/thevillawatamu",
   facebook: "https://facebook.com/thevillawatamu",
   tripadvisor: "https://www.tripadvisor.com/",
+  googleBusiness: "https://www.google.com/maps/search/?api=1&query=The+Villa+Watamu+Kenya",
 };
+
 
 export const NAV = [
   { to: "/", label: "Home" },
@@ -20,6 +34,7 @@ export const NAV = [
   { to: "/wellness", label: "Wellness" },
   { to: "/gallery", label: "Gallery" },
   { to: "/experiences", label: "Experiences" },
+  { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ] as const;
 

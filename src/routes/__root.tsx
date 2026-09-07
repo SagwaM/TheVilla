@@ -110,7 +110,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "The Villa @Watamu",
           description:
             "A boutique healing sanctuary and restaurant in Watamu, Kenya, with five luxury guest suites, a pool and jacuzzi, wellness space and on-site dining.",
-          telephone: SITE.phone,
+          telephone: SITE.phones.map((p) => p.display),
           email: SITE.email,
           priceRange: "$$$",
           address: {
@@ -130,7 +130,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             "Air Conditioning",
             "Solar Power with KPLC Backup",
           ].map((name) => ({ "@type": "LocationFeatureSpecification", name, value: true })),
-          sameAs: [SITE.instagram, SITE.facebook, SITE.tripadvisor],
+          sameAs: [SITE.instagram, SITE.facebook, SITE.tripadvisor, SITE.googleBusiness],
+          hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.mapQuery)}`,
+          areaServed: ["Watamu", "Malindi", "Kilifi County", "Kenya"],
+          keywords:
+            "Watamu accommodation, boutique hotel Watamu Kenya, villa Watamu, Watamu Marine Park, Kilifi County",
         }),
       },
     ],

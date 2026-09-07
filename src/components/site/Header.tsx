@@ -31,7 +31,19 @@ function Socials({ className }: { className?: string }) {
 
 export function Header() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const overHero = pathname !== "/privacy";
+  const HERO_PATHS = [
+    "/",
+    "/about",
+    "/accommodation",
+    "/dining",
+    "/wellness",
+    "/gallery",
+    "/experiences",
+    "/contact",
+    "/book",
+    "/blog",
+  ];
+  const overHero = HERO_PATHS.includes(pathname) || pathname.startsWith("/blog/");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -55,9 +67,11 @@ export function Header() {
             <span className="flex items-center gap-2">
               <MapPin className="h-3 w-3 text-gold" strokeWidth={1.5} /> {SITE.location}
             </span>
-            <a href={SITE.phoneHref} className="flex items-center gap-2 hover:text-gold">
-              <Phone className="h-3 w-3 text-gold" strokeWidth={1.5} /> {SITE.phone}
-            </a>
+            {SITE.phones.map((p) => (
+              <a key={p.href} href={p.href} className="flex items-center gap-2 hover:text-gold">
+                <Phone className="h-3 w-3 text-gold" strokeWidth={1.5} /> {p.display}
+              </a>
+            ))}
             <a href={SITE.emailHref} className="flex items-center gap-2 hover:text-gold">
               <Mail className="h-3 w-3 text-gold" strokeWidth={1.5} /> {SITE.email}
             </a>
@@ -119,7 +133,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             <Link
               to="/book"
-              className="hidden bg-gold px-6 py-3 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-gold-foreground transition-all duration-500 [transition-timing-function:var(--ease-calm)] hover:scale-[1.04] hover:bg-gold-soft sm:inline-flex"
+              className="hidden whitespace-nowrap bg-gold px-6 py-3 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-gold-foreground transition-all duration-500 [transition-timing-function:var(--ease-calm)] hover:scale-[1.04] hover:bg-gold-soft sm:inline-flex"
             >
               Book Your Stay
             </Link>
